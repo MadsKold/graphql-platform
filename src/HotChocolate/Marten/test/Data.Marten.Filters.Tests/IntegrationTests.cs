@@ -42,7 +42,7 @@ public class IntegrationTests : IAsyncLifetime
         {
             var request = QueryRequestBuilder.New()
                 .SetServices(scope.ServiceProvider)
-                .SetQuery("{ foos { nodes { id } } }")
+                .SetQuery("{ foos(where: { id: { eq: 1 } }) { nodes { id } } }")
                 .Create();
 
             var executor = await scope.ServiceProvider.GetRequestExecutorAsync();
